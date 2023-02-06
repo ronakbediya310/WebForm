@@ -131,8 +131,8 @@
     <th class="px-4 py-2">Name</th> 
     <th class="px-4 py-2">Email</th>
     <th class="px-4 py-2">Password</th>
-    <th class="px-4 py-2">DOB</th>
-    <th class="px-4 py-2">Accepted Term</th></tr> ${tableentries}
+    <th class="px-4 py-2">Dob</th>
+    <th class="px-4 py-2">Accepted Terms?</th></tr> ${tableentries}
     </table>`;
     let details=document.getElementById('user-entries');
     console.log(details);
@@ -140,7 +140,7 @@
  
 }
 const saveuserform=()=>{
-  
+  if(flag=1){
   const name=document.getElementById('name').value;
   const email=document.getElementById('email').value;
   const password=document.getElementById('password').value;
@@ -150,8 +150,9 @@ const saveuserform=()=>{
   userentries.push(entry);
   localStorage.setItem("user-entries",JSON.stringify(userentries));
   displayentries();
+  }
 }
-//localStorage.clear();
+localStorage.clear();
 displayentries();
 
 </script>
