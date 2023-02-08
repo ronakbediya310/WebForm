@@ -97,7 +97,7 @@
   <body>
     <div class="container">
       <h1>Registration Form</h1>
-      <form name="form" id="form" class="registartion-form" onsubmit="return validate()">
+      <form name="form" id="form" class="registartion-form" onsubmit="validate()" >
         <table>
           <tr>
             <td><label for="name">Username :</label></td>
@@ -158,7 +158,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <input type="submit" class="submit" value="Register" />
+              <input type="submit" class="submit" value="Register" onclick="return validate(event)"/>
             </td>
           </tr>
         </table>
@@ -199,6 +199,7 @@
           alert("Enter Date");
           dateflag = 0;
         }
+        return dateflag;
       }
       let nameflag = 0;
       let name = document.getElementById("name");
@@ -211,6 +212,7 @@
         } else {
           nameflag = 1;
         }
+        return nameflag;
       }
       let passflag = 0;
       let pass = document.getElementById("password");
@@ -224,6 +226,7 @@
         } else {
           passflag = 1;
         }
+        return passflag;
       }
 
       let emailflag = 0;
@@ -241,6 +244,7 @@
           else{
             emailflag=1;
           }
+          return emailflag;
       }
         
     let userData = JSON.parse(localStorage.getItem("user"));
@@ -260,20 +264,20 @@
     dobCell.innerHTML = userData[i].dob;
     acceptcell.innerHTML = userData[i].Accepted_terms;
 }}
-
-
- function validate(){
-    if(nameflag&&emailflag&&dateflag&&dateflag&&passflag)
+ function validate(event)
+ {
+    event.preventDefault();
+ if(validateDate()&&validateEmail()&&validateName()&&validatePass())
      {
         let  check=document.getElementById("tnc");
         let acceptedterms=check.checked;
         console.log(acceptedterms);
-        let record = JSON.parse(localStorage.getItem("user")) || [];
+        let data = JSON.parse(localStorage.getItem("user")) || [];
         let dob =date.value;
         let Username=document.getElementById("name").value;
         let email1=document.getElementById("email").value;
         let passwd=document.getElementById("password").value;   
-          record.push({
+          data.push({
             name: Username,
             email: email1,
             password: passwd,
@@ -292,7 +296,11 @@
           table.appendChild(row);
             return true
         }
-      }
+        else{
+            return false;
+        }
+    }
+      
 
       
       //localStorage.clear();
