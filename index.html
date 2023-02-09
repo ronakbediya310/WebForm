@@ -1,283 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registration Form</title>
-     <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script> 
-    
-
     <style>
-      * {
-        margin: 0;
-      }
-      #mytable
-      {
-        margin:0 auto;
-        display:table;
-        border: 2px solid rgb(106, 44, 44);
-          text-align: center;
-          width: 60%;
-          margin-top: 20px;
-          margin-bottom: 50px;
-      }
+        * {
+            margin: 100;
+            padding: 100;
+        }
 
-      .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 100vh;
-      }
+        html {
+            text-align: center;
+            background-color: rgb(0, 112, 112);
+        }
 
-      .container h1 {
-        color: green;
-      }
+        #name {
+            height: 26px;
+            background-color: rgb(173, 175, 175);
+        }
 
-      .registartion-form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 600px;
-        font-size: 18px;
-        background-color: #f0f0f0;
-        padding: 20px;
-        border: 2px solid green;
-        border-radius: 20px;
-      }
+        #email {
+            height: 26px;
+            background-color: rgb(173, 175, 175);
+        }
 
-      .registartion-form input,
-      .registartion-form select,
-      .registartion-form textarea {
-        padding: 5px;
-        margin-top: 10px;
-      }
+        #password {
+            height: 26px;
+            background-color: rgb(173, 175, 175);
+        }
 
-      .registartion-form .submit {
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-        height: 40px;
-        font-size: 20px;
-        color: #ffffff;
-        border-radius: 10px;
-        padding-top: 0px;
-        background-color: green;
-      }
+        #dob {
+            height: 26px;
+            width: 165px;
+            background-color: rgb(173, 175, 175);
+        }
 
-      input,
-      textarea,
-      .datepicker,
-      .selectpicker,
-      .language {
-        border-radius: 10px;
-      }
+        #nameBox {
+            padding-left: 120px;
+            height: 26px;
+        }
 
-      .submit {
-        margin-left: 100px;
-      }
+        #emailBox {
+            padding-left: 121px;
+            height: 26px;
+        }
 
-      #message {
-        padding-top: 10px;
-      }
+        #passBox {
+            padding-left: 89px;
+            height: 26px;
+        }
+
+        #dobBox {
+            padding-left: 60px;
+            height: 26px;
+        }
+
+        #nameDiv {
+            display: flex;
+            margin-top: 21px;
+            padding-left: 100px;
+        }
+
+        #emailDiv {
+            display: flex;
+            margin-top: 21px;
+            padding-left: 100px;
+        }
+
+        #passwordDiv {
+            display: flex;
+            margin-top: 21px;
+            padding-left: 100px;
+        }
+
+        #dobDiv {
+            display: flex;
+            margin-top: 21px;
+            padding-left: 100px;
+        }
+
+        #termsDiv {
+            display: flex;
+            padding-left: 5px;
+        }
+
+        #termsBox {
+            display: flex;
+            padding-top: 16px;
+            padding-left: 100px;
+
+        }
+
+        .container {
+            display: inline-block;
+            width: 40%;
+            padding: 8px 8px 8px 8px;
+            border: 2px solid rgb(250, 37, 37);
+            background-color: rgb(143, 148, 148);
+        }
+
+        .box {
+            margin-top: 100px;
+            margin-bottom: 100px;
+            background-color: rgb(109, 105, 105);
+            border: 2px solid rgb(5, 5, 5);
+            
+        }
+
+        .input {
+            display: initial;
+            font-size: 20px;
+            font-weight: 500;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            
+        }
+
+        #submitBtn {
+            display: flex;
+            padding-left: 97px;
+            padding-top: 23px;
+        }
+
+        #submit:hover{
+            background-color:rgb(17, 230, 125);
+        }
+
+        #submit {
+            width: 86px;
+            height: 35px;
+            font-size: 17px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border: 0ch;
+            border-radius: 10px;
+            background-color:rgb(31, 207, 120);
+        }
+
+        /* table CSS start from here*/
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 30px auto;
+            background-color: rgb(107, 98, 87);
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid rgb(0, 0, 0);
+            padding: 4px;
+        }
+
+        th {
+            font-size: 16px;
+            font-weight: 600;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        td {
+            font-size: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 300;
+        }
+
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
+
     <div class="container">
-      <h1>Registration Form</h1>
-      <form name="form" id="form" onsubmit=" validate()" class="registartion-form" >
-        <table>
-          <tr>
-            <td><label for="name">Username :</label></td>
-            <td>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Enter your name"
-                
-                
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label for="email">Email :</label></td>
-            <td>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="Enter your email"
-                
-                
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><label for="password">Password :</label></td>
-            <td>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Enter Password"
-                
-              />
-            </td>
-          </tr>
 
-          <tr>
-            <td><label for="date">DOB : </label></td>
-            <td>
-              <input
-                type="date"
-                class="form-control"
-                id="date"
-                name="date"
-                
-                
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><input type="checkbox" id="tnc" /></td>
-            <td>I agree to the terms and conditions</td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <input type="submit" class="submit"  onclick=" validate(event)" value="Register">
-            </td>
-          </tr>
-        </table>
-      </form>
+        <div class="heading">
+            <h1><i><u>Registration Form</u></i></h1>
+        </div>
+        <form onsubmit="validate()" name="myForm">
+
+            <div class="box">
+
+                <div id="nameDiv" class="input"> Name
+                    <div id="nameBox"><input type="text" placeholder="username" id="name" required> <br> </div>
+                </div>
+
+                <div id="emailDiv" class="input"> Email
+                    <div id="emailBox"><input type="text" placeholder="email" id="email" aria-decribedby="emailHelp"
+                            required><br></div>
+                </div>
+
+                <div id="passwordDiv" class="input "> Password
+                    <div id="passBox"> <input type="text" placeholder="password" id="password" required> <br> </div>
+                </div>
+
+                <div id="dobDiv" class="input"> Date of Birth
+                    <div id="dobBox"><input type="date" placeholder="date of birth" id="dob" min="18 years ago"
+                            max="55 years ago" required> <br> </div>
+                </div>
+
+                <div id="termsBox">
+                    <input type="checkbox" class="form-check-input" id="checkbox" required />
+                    <label id="terms" for="Check">Accept Terms & Conditions</label>
+                </div>
+
+                <div id="submitBtn">
+                    <button id="submit" type="submit" class="btn btn-success" onclick="validate(event)">
+                        Submit
+                    </button>
+                </div>
+            </div>
     </div>
-    <h1 style="text-align: center;">Entries</h1>
-     <table id="mytable" >
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Dob</th>
-            <th>Accepted terms?</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>  
+
+    <div id="errorMessage"></div>
+
+    <div class="Entries">
+        <h2>Entries</h2>
+        </form>
+        <table id="registrationTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Dob</th>
+                    <th>Accepted terms?</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
     <script>
 
 
-      //local storage part
-      let userData = JSON.parse(localStorage.getItem("user"));
-      if (userData && Array.isArray(userData)) {
-      let table = document.getElementById("mytable");
-      for (let i = 0; i < userData.length; i++) {
-      let row = table.insertRow();
-      let nameCell = row.insertCell(0);
-      let emailCell = row.insertCell(1);
-      let passwordCell = row.insertCell(2);
-      let dobCell = row.insertCell(3);
-      let acceptcell= row.insertCell(4);
+        let userData = JSON.parse(localStorage.getItem("user"));
 
-      nameCell.innerHTML = userData[i].name;
-      emailCell.innerHTML = userData[i].email;
-      passwordCell.innerHTML = userData[i].passwd;
-      dobCell.innerHTML = userData[i].dob;
-      acceptcell.innerHTML = userData[i].Accepted_terms;
-  }}
-
-  function validate(event)
-      {
-       event.preventDefault();
-       const name=document.getElementById("name").value;
-       const email=document.getElementById("email").value;
-       const passwd=document.getElementById("password").value;
-       const dob = document.getElementById("date").value;
-       const table = document.querySelector("#mytable tbody");
-       let flag = true;
-       const validateEmail=(email)=> { 
-          let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(String(email).toLowerCase());
-      }; 
-       const validateDate=(dob)=> {
-        let todayDate = new Date();
-        let tempDate = new Date(dob);
-        let diffTime = Math.abs(todayDate - tempDate);
-        let diffYears = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 365.25));
-        console.log(diffYears);
-        return diffYears;
-      }
-      const age=validateDate(dob);
-      //validation performing on date;
-        if (isNaN(age) || age < 18 || age > 55) {
-          alert("age must between 18 to 55");
-          flag=false;
-        }
         
-
-        //validation performing on name;
-        if ((!name)) {
-          alert("Please Enter valid name");
-          flag = false;
+        if (userData && Array.isArray(userData)) {
         
-        } 
+            let table = document.getElementById("registrationTable");
 
-        //validation on passwd
-        if (!passwd) {
-          alert("PASSWORD CANT BE EMPTY");
-          flag = false;  
-        }
         
+            for (let i = 0; i < userData.length; i++) {
 
-        //validating email
-          if(!validateEmail(email))  {
-              alert("Please Enter Valid Email Address");
-              flag=false;
-          }
-      if(flag)
-     {
-      console.log(flag);
-      
-        let  check=document.getElementById("tnc");
-        let acceptedterms=check.checked;
-        //console.log(acceptedterms);
-        let data = JSON.parse(localStorage.getItem("user")) || [];
-        console.log(data);
-        // Add the new user data to the array
-        data.push({
-          name: name,
-          email: email,
-          passwd: passwd,
-          dob: dob,
-          Accepted_terms:acceptedterms,
-          // Add any other relevant data here
-        });
-          localStorage.setItem("user", JSON.stringify(data));
-          const row = document.createElement("tr");
-          row.innerHTML = `
-          <td>${name}</td>
-          <td>${email}</td>
-          <td>${passwd}</td>
-          <td>${dob}</td>
-          <td>${acceptedterms}</td>`;
-          table.appendChild(row);  
-          document.getElementById("name").value="";
-          document.getElementById("email").value="";
-          document.getElementById("password").value="";
-          document.getElementById("date").value="";
+                let row = table.insertRow();
+
+                
+                let nameCell = row.insertCell(0);
+                let emailCell = row.insertCell(1);
+                let passwordCell = row.insertCell(2);
+                let dobCell = row.insertCell(3);
+                let t_and_cCell = row.insertCell(4);
+
+                
+                nameCell.innerHTML = userData[i].name;
+                emailCell.innerHTML = userData[i].email;
+                passwordCell.innerHTML = userData[i].password;
+                dobCell.innerHTML = userData[i].dob;
+                t_and_cCell.innerHTML = userData[i].Accepted_terms;
+                console.log("error")
+            }
         }
+
+        function validate(event) {
+            event.preventDefault();
+
+            let dob = document.getElementById("dob").value;
+            const name = document.forms["myForm"]["name"].value;
+            const email = document.forms["myForm"]["email"].value;
+            const password = document.forms["myForm"]["password"].value;
+            const errorMessage = document.getElementById("errorMessage");
+            const table = document.querySelector("#registrationTable tbody");
+            const checkbox = document.getElementById("checkbox");
+
+          
+            const calculateAge = (dob) => {
+                const today = new Date();
+                const birthDate = new Date(dob);
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+                if (
+                    monthDiff < 0 ||
+                    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+                ) {
+                    age--;
+                }
+                return age;
+            };
+
+            const age = calculateAge(dob);
+            console.log(age);
+
+           
+            const validateEmail = (email) => {
+                var re =
+                    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            };
+            if (validateEmail(email)) {
+                emailis = "valid";
+            } else {
+                emailis = "wrong";
+            }
+
+            errorMessage.innerHTML = "";
+
+            let isValid = true;
+
+            if (!name) {
+                alert("Name is required.");
+                isValid = false;
+            }
+
+            if (isNaN(age) || age < 18 || age > 55) {
+                alert("age must between 18 to 55");
+                isValid = false;
+            }
+
+            if (emailis === "wrong") {
+                alert("please enter valid email");
+                isValid = false;
+            }
+
+            if (!password) {
+                alert("Password is required. <br>");
+                isValid = false;
+            }
+
+            if (checkbox.checked) {
+                checkbox_status = "true"
+            } else {
+                checkbox_status = "false"
+            }
+
+            if (isValid) {
+                console.log("yes");
+
+                
+                let data = JSON.parse(localStorage.getItem("user")) || [];
+
+             
+                data.push({
+                    name: name,
+                    email: email,
+                    password: password,
+                    dob: dob,
+                    Accepted_terms: checkbox_status,
+                });
+
+                
+                localStorage.setItem("user", JSON.stringify(data));
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
+     <td>${name}</td>
+     <td>${email}</td>
+     <td>${password}</td>
+     <td>${dob}</td>
+     <td>${checkbox_status}</td>
+     `;
+                table.appendChild(row);
+
+                document.getElementById("dob").value = "";
+                document.forms["myForm"]["name"].value = "";
+                document.forms["myForm"]["email"].value = "";
+                document.forms["myForm"]["password"].value = "";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
        
       }
 
