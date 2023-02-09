@@ -97,7 +97,7 @@
   <body>
     <div class="container">
       <h1>Registration Form</h1>
-      <form name="form" id="form" class="registartion-form" onsubmit="validate()" >
+      <form name="form" id="form" onsubmit=" validate()" class="registartion-form" >
         <table>
           <tr>
             <td><label for="name">Username :</label></td>
@@ -107,7 +107,7 @@
                 name="name"
                 id="name"
                 placeholder="Enter your name"
-                onblur="validateName()"
+                
                 
               />
             </td>
@@ -120,7 +120,7 @@
                 name="email"
                 id="email"
                 placeholder="Enter your email"
-                onblur="validateEmail()"
+                
                 
               />
             </td>
@@ -133,7 +133,6 @@
                 name="password"
                 id="password"
                 placeholder="Enter Password"
-                onblur="validatePass()"
                 
               />
             </td>
@@ -147,7 +146,7 @@
                 class="form-control"
                 id="date"
                 name="date"
-                onblur="validateDate()"
+                
                 
               />
             </td>
@@ -158,7 +157,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <input type="submit" class="submit" value="Register" onclick="return validate(event)"/>
+              <input type="submit" class="submit"  onclick=" validate(event)" value="Register">
             </td>
           </tr>
         </table>
@@ -178,129 +177,109 @@
         <tbody></tbody>
       </table>  
     <script>
-      let date = document.getElementById("date");
-      let todayDate = new Date();
-      let dateflag = 0;
-      function validateDate() {
-        let tempDate = new Date(date.value);
+
+
+      //local storage part
+      let userData = JSON.parse(localStorage.getItem("user"));
+      if (userData && Array.isArray(userData)) {
+      let table = document.getElementById("mytable");
+      for (let i = 0; i < userData.length; i++) {
+      let row = table.insertRow();
+      let nameCell = row.insertCell(0);
+      let emailCell = row.insertCell(1);
+      let passwordCell = row.insertCell(2);
+      let dobCell = row.insertCell(3);
+      let acceptcell= row.insertCell(4);
+
+      nameCell.innerHTML = userData[i].name;
+      emailCell.innerHTML = userData[i].email;
+      passwordCell.innerHTML = userData[i].password;
+      dobCell.innerHTML = userData[i].dob;
+      acceptcell.innerHTML = userData[i].Accepted_terms;
+  }}
+
+  function validate(event)
+      {
+       event.preventDefault();
+       const name=document.getElementById("name").value;
+       const email=document.getElementById("email").value;
+       const passwd=document.getElementById("password").value;
+       const dob = document.getElementById("date").value;
+       const table = document.querySelector("#mytable tbody");
+       let flag = true;
+       const validateEmail=(email)=> { 
+          let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(String(email).toLowerCase());
+      }; 
+       const validateDate=(dob)=> {
+        let todayDate = new Date();
+        let tempDate = new Date(dob);
         let diffTime = Math.abs(todayDate - tempDate);
         let diffYears = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 365.25));
-        let name = document.getElementById("name").value;
         console.log(diffYears);
-        if (diffYears > 18 && diffYears < 55) {
-          dateflag = 1;
-        }
-        if (diffYears <= 18 || diffYears >= 55) {
-          alert("Enter date between  18-55");
-          dateflag = 0;
-          date.value="";
-        }
-        if ((diffYears = "")) {
-          alert("Enter Date");
-          dateflag = 0;
-        }
-        return dateflag;
+        return diffYears;
       }
-      let nameflag = 0;
-      let name = document.getElementById("name");
-      function validateName() {
-        console.log(name.value);
-        if ((name.value == "" || NaN == name.value)) {
-          alert("Please Enter valid name");
-          name.value = "";
-          nameflag = 0;
-        } else {
-          nameflag = 1;
+      const age=validateDate(dob);
+      //validation performing on date;
+        if (isNaN(age) || age < 18 || age > 55) {
+          alert("age must between 18 to 55");
+          flag=false;
         }
-        return nameflag;
-      }
-      let passflag = 0;
-      let pass = document.getElementById("password");
-
-      function validatePass() {
-        console.warn(pass.value);
-        if (pass.value == "") {
-          alert("PASSWORD CANT BE EMPTY");
-          pass.value = "";
-          passflag = 0;
-        } else {
-          passflag = 1;
-        }
-        return passflag;
-      }
-
-      let emailflag = 0;
-      let email = document.getElementById("email");
-      let emails= email.value;
-      function validateEmail() {
-        let emails=document.getElementById("email").value;
-          let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          emailflag= re.test(String(emails).toLowerCase());
-          console.log(emailflag);
-
-          if(emailflag==0)  {
-              alert("Please Enter Valid Email Address");
-          }
-          else{
-            emailflag=1;
-          }
-          return emailflag;
-      }
         
-    let userData = JSON.parse(localStorage.getItem("user"));
-    if (userData && Array.isArray(userData)) {
-    let table = document.getElementById("mytable");
-    for (let i = 0; i < userData.length; i++) {
-    let row = table.insertRow();
-    let nameCell = row.insertCell(0);
-    let emailCell = row.insertCell(1);
-    let passwordCell = row.insertCell(2);
-    let dobCell = row.insertCell(3);
-    let acceptcell= row.insertCell(4);
 
-    nameCell.innerHTML = userData[i].name;
-    emailCell.innerHTML = userData[i].email;
-    passwordCell.innerHTML = userData[i].password;
-    dobCell.innerHTML = userData[i].dob;
-    acceptcell.innerHTML = userData[i].Accepted_terms;
-}}
- function validate(event)
- {
-    event.preventDefault();
- if(validateDate()&&validateEmail()&&validateName()&&validatePass())
+        //validation performing on name;
+        if ((!name)) {
+          alert("Please Enter valid name");
+          flag = false;
+        
+        } 
+
+        //validation on passwd
+        if (!passwd) {
+          alert("PASSWORD CANT BE EMPTY");
+          flag = false;  
+        }
+        
+
+        //validating email
+          if(!validateEmail(email))  {
+              alert("Please Enter Valid Email Address");
+              flag=false;
+          }
+      if(flag)
      {
+      console.log(flag);
+      
         let  check=document.getElementById("tnc");
         let acceptedterms=check.checked;
-        console.log(acceptedterms);
+        //console.log(acceptedterms);
         let data = JSON.parse(localStorage.getItem("user")) || [];
-        let dob =date.value;
-        let Username=document.getElementById("name").value;
-        let email1=document.getElementById("email").value;
-        let passwd=document.getElementById("password").value;   
-          data.push({
-            name: Username,
-            email: email1,
-            password: passwd,
-            dob: dob,
-            Accepted_terms:acceptedterms,
-          });
+        console.log(data);
+        // Add the new user data to the array
+        data.push({
+          name: name,
+          email: email,
+          passwd: passwd,
+          dob: dob,
+          Accepted_terms:acceptedterms,
+          // Add any other relevant data here
+        });
           localStorage.setItem("user", JSON.stringify(data));
-          const table = document.querySelector("#mytable tbody");
           const row = document.createElement("tr");
           row.innerHTML = `
           <td>${name}</td>
           <td>${email}</td>
-          <td>${password}</td>
+          <td>${passwd}</td>
           <td>${dob}</td>
           <td>${acceptedterms}</td>`;
-          table.appendChild(row);
-            return true
+          table.appendChild(row);  
+          document.getElementById("name").value="";
+          document.getElementById("email").value="";
+          document.getElementById("password").value="";
+          document.getElementById("date").value="";
         }
-        else{
-            return false;
-        }
-    }
-      
+       
+      }
 
       
       //localStorage.clear();
